@@ -1,1 +1,128 @@
+//sum of two array element is equal to key (nlogn)
+#include<stdio.h>
+int c=0,s=0;
+////selection sort//////
+void sort(int arr[],int n){
+	int i,j,min,temp;
+	for(i=0;i<n-1;i++){
+		min=i;
+		for(j=i+1;j<n;j++){
+			if(arr[min]<arr[j])
+			   min=j;
+			  if(min!=i){
+			  
+			temp=arr[i];
+			arr[i]=arr[min];
+			arr[min]=temp;
+		}
+			
+		}
+	}
+}
+//// insertion sort/////
+void insort(int arr[],int n){
+	int c=0,s=0;
+  for(int i=1;i<n;i++){
+  	int temp=arr[i];
+  	int j=i-1;
+  //	c++;
+  	while(j>=0&&arr[j]<temp)
+	  {
+	    
+  		arr[j+1]=arr[j];
+  		j--;
+  		 s++;
+  		  
+  	
+	  }
+	    
+	  arr[j+1]=temp;
+	  	
+	  	
+  }
+  printf("\nc=%d,s=%d\n",c,s);
+}
 
+///quick sort/////
+int pivort(int arr[],int lb,int ub){
+	int pivort=arr[lb];
+	int start=lb+1,temp;
+	int end=ub;
+	
+	while(start<end){
+		
+		   while(arr[start]<=pivort){
+		   	start++;
+		   	c++;
+		   }
+		   while(arr[end]>pivort){
+		   	end--;
+		   	c++;
+		   }
+			if(start<end){
+			  temp=arr[start];
+			  arr[start]=arr[end];
+			  arr[end]=temp;
+			  s++;
+			}
+	}
+	//swap(arr[lb],arr[end]);
+	    temp=arr[lb];
+		arr[lb]=arr[end];
+	    arr[end]=temp;
+	    s++;
+	return end;
+
+}
+
+
+void quick(int arr[],int lb,int ub){
+	if(lb<ub){	
+	int loc=pivort(arr,lb,ub);
+	quick(arr,lb,loc-1);
+	quick(arr,loc+1,ub);
+	}
+}
+int main(){
+	int arr[50];
+	int t,n,i,j,key;
+	printf("\nenetr the number of test case \n");
+	scanf("%d",&t);
+	while(t){
+		printf("\nenter the no of element \n");
+		scanf("%d",&n);
+		for(i=0;i<n;i++)
+	    {
+		scanf("%d",&arr[i]);
+	}
+	    int lb=0,ub=n-1;
+	   // insort(arr,n);
+	    quick(arr,lb,ub);
+	    
+	    printf("after sorting\n");
+	    for(i=0;i<n;i++)
+	     printf("%d,",arr[i]);
+	     puts("\n");
+	     
+	     
+	     i=0,j=n-1;
+	     printf("\n enter the key value\n");
+	     scanf("%d",&key);
+	     ///// checking key value///////////
+	     while(i<j){
+	     	if((arr[i]+arr[j])==key){
+	     		printf("index-%d,%d",i,j);
+	     		break;
+			 }
+			 else if((arr[i]+arr[j])>key){
+			 	i++;
+			 }
+			 else{
+			 	j--;
+			 }
+		 }
+	   	t--; 
+	   	printf("\n\n");
+	}
+    printf("%d,%d",c,s);
+	}
