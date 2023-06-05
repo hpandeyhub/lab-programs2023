@@ -1,1 +1,28 @@
 
+                   ////// insertion sort ////////////
+                   
+#include<stdio.h>
+
+int main (){
+	int arr[10]={5,3,6,22,1,0,8,6,9,7};
+	int i,j,temp,n=10;
+	printf("\narray before sorting\n");
+		for(i=0;i<10;i++){
+		printf(",%d",arr[i]);
+	}
+    for(i=1;i<n;i++){
+    	temp=arr[i];
+    	j=i-1;
+    	while(j>=0&&arr[j]<temp){
+    		arr[j+1]=arr[j];
+    		j--;
+		}
+		arr[j+1]=temp;
+	}
+    
+		printf("\narray after sorting\n");
+	for(i=0;i<10;i++){
+		printf(",%d",arr[i]);
+	}
+}
+
