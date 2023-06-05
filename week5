@@ -62,3 +62,50 @@ int main(){
 	           printf("[%c]",arr[i]);
 	}
 }
+
+/// given unsorted array///
+import java.util.Scanner;
+class array{
+public static void main(String[] args){
+
+    Scanner sc=new Scanner(System.in);
+    System.out.println("enetr the no of element ");
+    int n=sc.nextInt();
+    System.out.print(n);
+    int arr[]=new int[n];
+    //int i,j;
+    for(int i=0;i<n;i++){
+        arr[i]=sc.nextInt();
+    }
+    // array should be sorted
+    for(int i=1;i<n;i++){
+        int temp=arr[i];
+        int j=i-1;
+        while(j>=0&&arr[j]>temp){
+             arr[j+1]=arr[j];
+             j--;
+        }
+        arr[j+1]=temp;
+    }
+    for(int i=0;i<n;i++){
+       System.out.print(arr[i]+" ");
+       //System.out.println();
+    }
+    System.out.println("enter the sum(target) value you want");
+    int i=0,j=n-1,key;
+    key=sc.nextInt();
+    
+    while(i<j){
+        if(arr[i]+arr[j]==key){
+            System.out.println("index value i="+i+"and"+"j="+j);
+            i++;
+           
+        }
+        else if(arr[i]+arr[j]>key)
+            j--;
+        else 
+        i++;
+    }
+      
+}
+}
