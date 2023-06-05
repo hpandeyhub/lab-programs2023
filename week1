@@ -126,3 +126,36 @@ int main(){
 	}
     printf("%d,%d",c,s);
 	}
+//
+//search in array
+
+
+
+
+#include<stdio.h>
+int main(){
+	int arr[50],i,n,key;
+	int flag=0;
+	printf("enter the number of element in array");
+	scanf("%d",&n);
+	for(i=0;i<n;i++){
+		scanf("%d",&arr[i]);
+	}
+	printf("enter the number want to saerch\n");
+	scanf("%d",&key);
+	for(i=0;i<n;i++){
+		if(key==arr[i]){
+		    flag=1;
+			break;
+		}
+	
+	}
+	if(flag==1){
+			printf("element present \n no of comparision-%d",++i);
+	}
+	else{
+			printf("element not foun");
+	}
+	
+}
+
